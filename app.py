@@ -4,9 +4,9 @@ from datetime import datetime
 
 # Function to process the data
 def process_data(df):
-    df['Date/Time Logged'] = pd.to_datetime(df['Date/Time Logged'], errors='coerce')
-    today = datetime.today()
-    df['days_diff'] = (today - df['Date/Time Logged']).dt.days
+    df['Date/Time Logged'] = pd.to_datetime(df['Date/Time Logged']).dt.date
+    today = datetime.today().date()  # Keep only the date, not time
+    df['days_diff'] = (today - df['Date/Time Logged']).apply(lambda x: x.days)
 
     bins = [-1, 0, 5, 15, 30, 60, 90, float('inf')]
     labels = ['Same Day', '1-5', '6-15', '16-30', '31-60', '61-90', 'Over 91']
