@@ -34,7 +34,7 @@ def process_data(df):
     
     return result
 
-st.title("Ticket Analysis App")
+st.title("Ticket Dashboard")
 uploaded_file = st.file_uploader("Upload an Excel file", type=["xls", "xlsx"])
 
 if uploaded_file is not None:
